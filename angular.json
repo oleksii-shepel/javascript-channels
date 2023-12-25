@@ -1,0 +1,40 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "channels": {
+      "projectType": "library",
+      "root": "projects/channels",
+      "sourceRoot": "projects/channels/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/channels/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/channels/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/channels/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/channels/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
